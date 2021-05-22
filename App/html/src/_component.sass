@@ -1,0 +1,49 @@
+img,
+svg
+  vertical-align: middle
+
+.icon
+  display: inline-flex
+  width: 25px
+  max-width: 25px
+  flex: 0 0 25px
+  img,
+  svg
+    width: 100%
+
+
+// burger
+.burger-wrp
+  display: none
+  padding: 0 1rem
+
+.burger
+  width: 21px
+  height: 1rem
+  position: relative
+  cursor: pointer
+  span
+    width: 100%
+    height: 2px
+    background: #fff
+    +animate
+
+.burger-line
+  position: absolute
+  left: 0
+  &:first-of-type
+    top: 0
+  &:nth-of-type(2)
+    top: calc(50% - 1px)
+  &:last-of-type
+    bottom: 0
+
+.burger-line.active
+  &:first-of-type
+    top: 40%
+    transform: rotate(45deg)
+  &:nth-of-type(2)
+    opacity: 0
+  &:last-of-type
+    bottom: 48%
+    transform: rotate(-45deg)
