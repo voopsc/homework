@@ -7,6 +7,7 @@ svg
   width: 25px
   max-width: 25px
   flex: 0 0 25px
+  box-sizing: border-box
   img,
   svg
     width: 100%
@@ -47,3 +48,18 @@ svg
   &:last-of-type
     bottom: 48%
     transform: rotate(-45deg)
+
+// socials
+.socials
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  > li
+    margin: 0 1rem .5rem 0
+  a
+    &:hover
+      svg
+        fill: $main-color
+  svg
+    fill: $color-one
