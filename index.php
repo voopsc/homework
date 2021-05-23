@@ -7,6 +7,7 @@
 
     // Namespaces
     use Framework\Autoload as Autoloader;
+    use Framework\Router as Router;
 
     // Autoloader
     $autoloadPath = [FRAMEWORK, 'Autoload', 'Autoload.php'];
@@ -24,3 +25,5 @@
     // $autoload->register();
 
     // Router
+    $router = new Router\Router;
+    $router->run();
