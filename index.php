@@ -13,8 +13,11 @@
     $autoloadPath = [FRAMEWORK, 'Autoload', 'Autoload.php'];
     require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
 
-    // $autoload = new Autoloader\Autoload;
-
+    $autoload = new Autoloader\Autoload([
+      'Framework\\Router' => 'Framework/Router',
+    ]);
+    
+    $autoload->register();
 
     // $a = scandir(ROOT);
     // print_r($a);

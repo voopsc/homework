@@ -32,12 +32,29 @@
         spl_autoload_register(array($this, 'loadClass'));
       }
 
+      public function loadClass($className)
+      {
+        $className = trim($className, '\\');
+
+        foreach ($this->prefixes as $namespace => $dir) {
+          if (preg_match("~[$namespace]~", $className)) {
+            echo "1";
+            return;
+          }
+        }
+        // echo 'no';
+        echo $className;
+        die;
+        // echo "<br>";
+        // print_r($this->prefixes);
+        // die;
+      }
       // end of class
     }
 
     // $autoload = new Autoload([
-    //   'App\\' => 'html',
-    //   'Database\\Migrations' => 'database/migrations/',
+    //   // 'App\\' => 'html',
+    //   // 'Database\\Migrations' => 'database/migrations/',
     // ]);
     //
     // $test = $autoload->loadClass();
