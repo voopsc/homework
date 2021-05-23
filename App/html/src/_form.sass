@@ -14,9 +14,52 @@ select
   box-sizing: border-box
   font-feature-settings: 'pnum' on, 'lnum' on
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus
+  // -webkit-text-fill-color: green
+  // -webkit-box-shadow: 0 0 0px 1000px #000 inset
+  transition: background-color 5000s ease-in-out 0s
+  background: none
+
+
 input,
 textarea,
 select,
 button
   cursor: pointer
   width: 100%
+
+.form-main
+  label
+    display: flex
+    flex-wrap: nowrap
+    width: 100%
+    background: #ebebeb
+    border-radius: 5px
+    padding: .75rem
+    margin-bottom: .9rem
+    cursor: pointer
+  .icon
+    margin-right: 1rem
+    order: 0
+  svg
+    fill: $color-grey
+    +animate
+  input
+    font: 400 .9em/1.5 $main-font
+    order: 1
+    &:focus
+      ~ .icon
+        svg
+          fill: $main-color
+  button
+    padding: .9rem 2.5rem
+    max-height: 49px
+    border-radius: 5px

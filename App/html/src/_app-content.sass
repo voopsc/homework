@@ -44,12 +44,29 @@
 .login-registration
   .content
     width: 100%
-    max-width: 400px
+    max-width: 370px
+    min-width: inherit
+  .form-box
+    position: relative
   .form-wrp
     background: #fff
     text-align: center
     border-radius: 12px
     padding: 2rem
+    opacity: 0
+    transform: translateY(-2rem)
+    +animate
+    &.visible
+      opacity: 1
+      transform: translateY(0rem)
+  .top-form
+    position: absolute
+
+  .error-list
+    padding: 1rem
+    color: $alert
+    text-align: left
+    list-style: disc
 
 .user-action
   margin-bottom: 1.3rem

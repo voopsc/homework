@@ -178,12 +178,65 @@ select {
           font-feature-settings: "pnum" on, "lnum" on;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+  background: none;
+}
+
 input,
 textarea,
 select,
 button {
   cursor: pointer;
   width: 100%;
+}
+
+.form-main label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+  background: #ebebeb;
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin-bottom: 0.9rem;
+  cursor: pointer;
+}
+.form-main .icon {
+  margin-right: 1rem;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+}
+.form-main svg {
+  fill: #848484;
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+}
+.form-main input {
+  font: 400 0.9em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.form-main input:focus ~ .icon svg {
+  fill: #ffd232;
+}
+.form-main button {
+  padding: 0.9rem 2.5rem;
+  max-height: 49px;
+  border-radius: 5px;
 }
 
 .btn {
@@ -680,13 +733,36 @@ svg {
 
 .login-registration .content {
   width: 100%;
-  max-width: 400px;
+  max-width: 370px;
+  min-width: inherit;
+}
+.login-registration .form-box {
+  position: relative;
 }
 .login-registration .form-wrp {
   background: #fff;
   text-align: center;
   border-radius: 12px;
   padding: 2rem;
+  opacity: 0;
+  -webkit-transform: translateY(-2rem);
+          transform: translateY(-2rem);
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+}
+.login-registration .form-wrp.visible {
+  opacity: 1;
+  -webkit-transform: translateY(0rem);
+          transform: translateY(0rem);
+}
+.login-registration .top-form {
+  position: absolute;
+}
+.login-registration .error-list {
+  padding: 1rem;
+  color: #f93737;
+  text-align: left;
+  list-style: disc;
 }
 
 .user-action {
