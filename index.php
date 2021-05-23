@@ -2,11 +2,24 @@
 
     // General settings
     ini_set('display_errors', '1');
-    define('ROOT', dirname(__DIR__));
+    define('ROOT', __DIR__);
+    define('FRAMEWORK', ROOT . DIRECTORY_SEPARATOR . 'Framework');
+
+    // Namespaces
+    use Framework\Autoload as Autoloader;
 
     // Autoloader
-    // $autoloadPath = [ROOT, 'Framework', 'Autoload', 'Autoload.php'];
-    // require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
+    $autoloadPath = [FRAMEWORK, 'Autoload', 'Autoload.php'];
+    require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
+
+    // $autoload = new Autoloader\Autoload;
+
+
+    // $a = scandir(ROOT);
+    // print_r($a);
+
+
+
     // $autoload = new Autoload;
     // $autoload->register();
 
