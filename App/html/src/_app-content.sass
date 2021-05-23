@@ -106,3 +106,29 @@
     fill: #ffffff
   .info
     opacity: .7
+
+.cart-product
+  margin: 1rem 0
+  > li
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+    align-items: flex-start
+    margin-bottom: 1.4rem
+    .img-wrp
+      flex: 1 1 15%
+    .product-item
+      flex: 1 1 85%
+    .price-box
+      align-items: center
+      justify-content: space-between
+
+.cart-icon
+  position: relative
+
+#count
+  position: absolute
+  top: -.8rem
+  right: -.8rem
+  font: 900 .9em/1.5 $main-font
+  color: $main-color
