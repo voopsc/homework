@@ -176,6 +176,12 @@ section {
           justify-content: flex-end;
 }
 
+.f-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .text-center {
   text-align: center;
 }
@@ -260,6 +266,13 @@ button {
   padding: 0.9rem 2.5rem;
   max-height: 49px;
   border-radius: 5px;
+}
+.form-main .label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font: 700 0.975em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  color: #848484;
 }
 
 .btn {
@@ -839,6 +852,54 @@ svg {
   opacity: 0.7;
 }
 
+.cart-product {
+  margin: 1rem 0;
+}
+.cart-product > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 1.4rem;
+}
+.cart-product > li .img-wrp {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 15%;
+          flex: 1 1 15%;
+}
+.cart-product > li .product-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 85%;
+          flex: 1 1 85%;
+}
+.cart-product > li .price-box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+#count {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  font: 900 0.9em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  color: #ffd232;
+}
+
 /* For tablets */
 @media (max-width: 1024px) {
   .list-three-items > li,
@@ -894,5 +955,10 @@ svg {
 
   .logo-text {
     display: none;
+  }
+
+  .cart-product > li .img-wrp {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
   }
 }
