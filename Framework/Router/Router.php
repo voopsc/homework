@@ -13,6 +13,10 @@
       */
       private $routes;
 
+      /** Mapping of router rules to object
+      *
+      * @var string $routesPath
+      */
       public function __construct($routesPath)
       {
         if (file_exists($routesPath)) {
@@ -29,7 +33,7 @@
 
       public function run()
       {
-
+        print_r($this->routes);
       }
 
       // end of class
