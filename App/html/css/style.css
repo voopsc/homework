@@ -28,8 +28,18 @@ p {
 }
 
 .title-main {
-  font: normal 900 1.62em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  font: 900 1.62em/1.5 "Raleway", Arial, Helvetica, sans-serif;
   margin-bottom: 1.9rem;
+}
+
+.title {
+  font: 900 1.2em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  margin-bottom: 1.4rem;
+}
+
+.subtitle {
+  font: 700 0.975em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  margin-bottom: 0.9rem;
 }
 
 .link {
@@ -52,6 +62,18 @@ section,
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+}
+
+.header,
+section,
+.footer {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section {
+  padding: 50px 0;
 }
 
 .wrapper {
@@ -716,7 +738,7 @@ svg {
   vertical-align: baseline;
   position: relative;
 }
-.price-box span {
+.price-box .price span:not(.normal-price) {
   font: 700 1.5em/1.5 "Raleway", Arial, Helvetica, sans-serif;
   vertical-align: baseline;
   -webkit-font-feature-settings: "pnum" on, "lnum" on;
@@ -776,9 +798,29 @@ svg {
   color: #ffd232;
 }
 
+.product-info .price-box {
+  padding: 1rem 1.8rem;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  margin-bottom: 1.3rem;
+}
+.product-info .buy-btn {
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  padding: 0.8rem 1.5rem;
+  border-radius: 3px;
+}
+.product-info .buy-btn img {
+  width: 20px;
+  margin-right: 1rem;
+}
+
 /* For tablets */
 @media (max-width: 1024px) {
-  .list-three-items > li {
+  .list-three-items > li,
+.list-four-items > li {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 50%;
             flex: 1 1 50%;
@@ -797,9 +839,29 @@ svg {
     display: none;
   }
 }
+/* For small tables */
+@media (max-width: 768px) {
+  .product-info {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+  .product-info .price {
+    margin-bottom: 1rem;
+  }
+  .product-info .price-box {
+    padding: 1rem;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .product-info .buy-btn {
+    width: 100%;
+  }
+}
 /* For mobile */
 @media (max-width: 680px) {
-  .list-three-items > li {
+  .list-three-items > li,
+.list-four-items > li {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;

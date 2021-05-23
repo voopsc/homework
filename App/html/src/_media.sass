@@ -2,7 +2,8 @@
 /* For tablets */
 @media (max-width: 1024px)
   // general
-  .list-three-items
+  .list-three-items,
+  .list-four-items
     > li
       flex: 1 1 50%
       width: 50%
@@ -16,10 +17,23 @@
   .home__aside
     display: none
 
+/* For small tables */
+@media (max-width: 768px)
+  .product-info
+    flex: 1 1 100%
+    .price
+      margin-bottom: 1rem
+    .price-box
+      padding: 1rem
+      flex-wrap: wrap
+    .buy-btn
+      width: 100%
+
 /* For mobile */
 @media (max-width: 680px)
   // general
-  .list-three-items
+  .list-three-items,
+  .list-four-items
     > li
       flex: 1 1 100%
       width: 100%
