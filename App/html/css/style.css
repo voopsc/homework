@@ -32,8 +32,14 @@ p {
   margin-bottom: 1.9rem;
 }
 
+.link {
+  font: normal 700 1em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+}
+
 .info {
   font: normal 400 0.912em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  -webkit-font-feature-settings: "pnum" on, "lnum" on;
+          font-feature-settings: "pnum" on, "lnum" on;
 }
 
 .header,
@@ -145,6 +151,10 @@ section,
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.text-center {
+  text-align: center;
 }
 
 button,
@@ -272,6 +282,12 @@ button {
           backdrop-filter: blur(0px);
   -webkit-transition: 0.3s linear all;
   transition: 0.3s linear all;
+}
+.modal .content {
+  position: relative;
+  z-index: 7;
+  min-width: 30%;
+  max-width: 600px;
 }
 
 img,
@@ -648,8 +664,10 @@ svg {
   position: relative;
 }
 .price-box span {
-  font: normal 700 1.5em/1.5 "Raleway", Arial, Helvetica, sans-serif;
+  font: 700 1.5em/1.5 "Raleway", Arial, Helvetica, sans-serif;
   vertical-align: baseline;
+  -webkit-font-feature-settings: "pnum" on, "lnum" on;
+          font-feature-settings: "pnum" on, "lnum" on;
 }
 .price-box .normal-price {
   position: absolute;
@@ -658,6 +676,28 @@ svg {
   text-decoration: line-through;
   font-size: 0.8em;
   opacity: 0.6;
+}
+
+.login-registration .content {
+  width: 100%;
+  max-width: 400px;
+}
+.login-registration .form-wrp {
+  background: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.user-action {
+  margin-bottom: 1.3rem;
+}
+.user-action > li {
+  color: #fff;
+  cursor: pointer;
+}
+.user-action .active {
+  color: #ffd232;
 }
 
 /* For tablets */

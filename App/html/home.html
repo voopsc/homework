@@ -392,21 +392,20 @@
     </main>
 
     <!-- modals -->
-    <div class="modal" data-modal="login-signup">
+    <div class="login-registration modal" data-modal="login-signup">
       <span class="overlay"></span>
       <div class="content">
-        <i class="close-icon"></i>
-        <form class="block-form" action="/form" method="post">
-          <fieldset>
-            <input type="text" name="user_name" value="" placeholder="<?php echo USER_NAME_TITLE; ?>" required>
-          </fieldset>
-          <fieldset>
-            <input type="tel" class="phone-number" name="user_phone" value="+380" placeholder="+380" required>
-          </fieldset>
-          <fieldset>
-            <button type="submit" name="button" class="btn btn-main"><?php echo ORDER_BTN_TITLE; ?></button>
-          </fieldset>
-        </form>
+        <ul class="user-action list list-two-items text-center">
+          <li class="link active">
+            Увійти
+          </li>
+          <li class="link">
+            Зареєструватися
+          </li>
+        </ul>
+        <div class="form-wrp text-center">
+          <h2 class="title-main">Увійти</h2>
+        </div>
       </div>
     </div>
 

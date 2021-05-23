@@ -30,8 +30,9 @@
     vertical-align: baseline
     position: relative
   span
-    font: normal 700 1.5em/1.5 $main-font
+    font: 700 1.5em/1.5 $main-font
     vertical-align: baseline
+    font-feature-settings: 'pnum' on, 'lnum' on
   .normal-price
     position: absolute
     top: -1rem
@@ -39,3 +40,21 @@
     text-decoration: line-through
     font-size: .8em
     opacity: .6
+
+.login-registration
+  .content
+    width: 100%
+    max-width: 400px
+  .form-wrp
+    background: #fff
+    text-align: center
+    border-radius: 12px
+    padding: 2rem
+
+.user-action
+  margin-bottom: 1.3rem
+  > li
+    color: $color-text-two
+    cursor: pointer
+  .active
+    color: $main-color
