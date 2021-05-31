@@ -16,7 +16,7 @@
     $autoload = new Autoloader\Autoload([
       'Framework\\Router' => 'Framework/Router',
     ]);
-    
+
     $autoload->register();
 
     // $a = scandir(ROOT);
