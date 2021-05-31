@@ -1,6 +1,7 @@
 <?php
 
     use Framework\Database as Database;
+    use App\Model as App;
 
     /**
      *
@@ -10,7 +11,8 @@
 
       function __construct()
       {
-        $this->product = new Product;
+        $this->db = new Database\Db;
+        $this->product = new App\Product;
       }
 
       /** Get product list from db
@@ -22,7 +24,7 @@
 
         $sql = 'SELECT val_one, val_two, val_three, etc FROM product ORDER BY val_one ASC';
 
-        $result = $connection->prepare($sql);
+        $result = $db->prepare($sql);
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $result->execute();
 
@@ -42,15 +44,15 @@
 
       /** Get single product item from db
       * @param int $id
-      * @return array|bool
+      * @return object
       */
       public function getProductById(int $id)
       {
-        $connection = $this->db->getConnection();
+        $db = $this->db->getConnection();
 
-        $sql = 'SELECT * FROM product WHERE val_one = :id';
+        $sql = "SELECT * FROM product WHERE val_one = :id";
 
-        $result = $connection->prepare($sql);
+        $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 
         $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -98,7 +100,7 @@
                val_three = :val_three
              WHERE etc = :etc";
 
-        $result = $connection->prepare($sql);
+        $result = $db->prepare($sql);
         $result->bindParam(':val_one', $options['val_one'], PDO::PARAM_INT);
         $result->bindParam(':val_two', $options['val_two'], PDO::PARAM_STR);
         $result->bindParam(':val_three', $options['val_three'], PDO::PARAM_LOB);
@@ -116,7 +118,7 @@
 
         $sql = 'DELETE FROM product WHERE val_one = :id';
 
-        $result = $connection->prepare($sql);
+        $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         return $result->execute();
       }

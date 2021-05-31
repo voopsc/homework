@@ -2,6 +2,10 @@
     namespace App\Model;
 
     /**
+     * @var $product
+     */
+
+    /**
      *
      */
     class Product
