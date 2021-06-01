@@ -14,19 +14,19 @@
     require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
 
     $autoload = new Autoloader\Autoload([
-      'Framework\\Router' => 'Framework/Router',
+      'Framework\\Router' => 'Framework'.DIRECTORY_SEPARATOR.'Router',
+      'Framework\\Autoload' => 'Framework'.DIRECTORY_SEPARATOR.'Autoload',
     ]);
 
     $autoload->register();
 
-    // $a = scandir(ROOT);
-    // print_r($a);
-
-
-
-    // $autoload = new Autoload;
-    // $autoload->register();
 
     // Router
-    $router = new Router\Router;
+    $routes = (implode(DIRECTORY_SEPARATOR, [
+      ROOT,
+      'App',
+      'config',
+      'routes.php'])
+    );
+    $router = new Router\Router($routes);
     $router->run();

@@ -24,41 +24,76 @@
         $this->prefixes = $prefixes;
       }
 
-      /** Call autoloader
-      * @return void
-      */
       public function register()
       {
-        spl_autoload_register(array($this, 'loadClass'));
+        spl_autoload_register([$this, 'autoloader']);
       }
 
-      public function loadClass($className)
+      private function getNamespace($className)
       {
-        $className = trim($className, '\\');
+        $result = false;
+        if (!empty($className)) {
+          $result = explode('\\', $className);
+          $class = array_pop($result);
+          $result = [
+            implode(DIRECTORY_SEPARATOR, $result),
+            $class,
+          ];
+        }
 
-        foreach ($this->prefixes as $namespace => $dir) {
-          if (preg_match("~[$namespace]~", $className)) {
-            echo "1";
+        return $result;
+      }
+
+      public function autoloader($className)
+      {
+        // echo "prefixes: <br>" ;
+        // print_r($this->prefixes);
+        // echo "<br> calssname: <br>";
+        // print_r($className);
+
+        $classData = $this->getNamespace($className);
+
+        foreach ($this->prefixes as $namespace => $filepath) {
+          if (preg_match("~[^$namespace$]~", $classData[0])) {
+            $this->requireFile($filepath . '/' . $classData[1] . '.php');
+            // echo ROOT . DIRECTORY_SEPARATOR . $filepath . DIRECTORY_SEPARATOR . $classData[1] . '.php';
             return;
           }
+          // else {
+          //   echo "no <br>";
+          // }
+          // echo "namespace: ";
+          // echo "<br>";
+          // var_dump($namespace);
+          // echo "<br>";
+          // echo "class namespace: ";
+          // echo "<br>";
+          // var_dump($classNamespace);
+          // echo "<br>";
+
         }
-        // echo 'no';
-        echo $className;
         die;
-        // echo "<br>";
-        // print_r($this->prefixes);
-        // die;
       }
+
+      /**
+       * If a file exists, require it from the file system.
+       *
+       * @param string $file The file to require.
+       * @return bool True if the file exists, false if not.
+       */
+      protected function requireFile($file)
+      {
+          if (file_exists($file)) {
+              require_once ROOT . DIRECTORY_SEPARATOR . $file;
+              return true;
+          }
+          // return false;
+      }
+
+      // public function load($className)
+      // {
+      //
+      // }
+
       // end of class
     }
-
-    // $autoload = new Autoload([
-    //   // 'App\\' => 'html',
-    //   // 'Database\\Migrations' => 'database/migrations/',
-    // ]);
-    //
-    // $test = $autoload->loadClass();
-    // var_dump($test);
-    //
-    // echo get_class($autoload);
-    // // print_r($autoload);
