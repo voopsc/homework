@@ -17,6 +17,7 @@
       {
         if ($this->developerMode == 1) {
           switch ($errorNum) {
+            case 3: echo "Error x0004: there is empty router rules"; die;
             case 2: echo "Error x0003: there is no action in existed controller"; die;
             case 1: echo "Error x0002: there is no controller file for this URI"; die;
             case 0: echo "Error x0001: there is no route rule and controller/action for this URI"; die;
