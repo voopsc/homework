@@ -22,11 +22,8 @@
 
 
     // Router
-    $routes = (implode(DIRECTORY_SEPARATOR, [
-      ROOT,
-      'App',
-      'config',
-      'routes.php'])
-    );
+    $routes = (implode(DIRECTORY_SEPARATOR, [ROOT, 'App', 'config', 'routes.php']));
+
+
     $router = new Router\Router($routes);
     $router->run();

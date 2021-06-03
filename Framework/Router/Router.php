@@ -12,13 +12,15 @@
       *
       * @var string $routesPath with path for app router rules array
       */
-      public function __construct($routesPath)
+      public function __construct($routesPath, $controllerDir = '')
       {
         if (file_exists($routesPath)) {
           $this->routes = include($routesPath);
         } else {
           $this->serverError();
         }
+
+        $this->controllerDir = $controllerDir;
 
         $this->errorHandler = new ErrorHandler;
       }
@@ -72,6 +74,25 @@
         }
       }
 
+      /** Include controller file for run method
+      *
+      */
+      private function callController($controllerFilepath)
+      {
+        if (file_exists($controllerFilepath)) {
+          include_once($controllerFilepath);
+
+          $controllerObject = new $controllerName;
+        } else {
+          $this->errorHandler->getError(4);
+        }
+      }
+
+
+
+      /** Execute controller and page from URI
+      * @return void
+      */
       public function run()
       {
         $requestedURI = $this->getURI();
@@ -87,17 +108,12 @@
           $controllerName = ucfirst(array_shift($segments).'Controller');
           $pageName = 'page'.ucfirst(array_shift($segments));
           $paramenters = $segments;
-          
-          print_r($pageName);
-          // $controllerName = array_shift($segments).'Controller';
-          // $controllerName = ucfirst($controllerName);
 
+          $controllerFile = $this->controllerDir . $controllerName . '.php';
+          $this->callController($controllerFile);
         } else {
           $this->errorHandler->getError(0);
         }
-
-
-        // var_dump($this->checkURI());
       }
 
       // end of class
