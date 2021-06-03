@@ -22,8 +22,10 @@
 
 
     // Router
-    $routes = (implode(DIRECTORY_SEPARATOR, [ROOT, 'App', 'config', 'routes.php']));
+    $routes = [ROOT, 'App', 'config', 'routes.php'];
+    $routes = Helper::getFilepathString($routes);
 
+    echo $routes;
 
-    $router = new Router\Router($routes);
-    $router->run();
+    // $router = new Router\Router($routes);
+    // $router->run();
