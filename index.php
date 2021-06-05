@@ -14,18 +14,18 @@
     require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
 
     $autoload = new Autoloader\Autoload([
-      'Framework\\Router' => 'Framework'.DIRECTORY_SEPARATOR.'Router',
-      'Framework\\Autoload' => 'Framework'.DIRECTORY_SEPARATOR.'Autoload',
+      'App\\Model' => 'App'.DIRECTORY_SEPARATOR.'model',
+      // 'Framework\\Router' => 'Framework'.DIRECTORY_SEPARATOR.'Router',
+      // 'Framework\\Autoload' => 'Framework'.DIRECTORY_SEPARATOR.'Autoload',
     ]);
 
     $autoload->register();
+    $autoload->load('App\\Model\\Product');
 
 
     // Router
     $routes = [ROOT, 'App', 'config', 'routes.php'];
     $routes = Helper::getFilepathString($routes);
 
-    // echo $routes;
-
-    // $router = new Router\Router($routes);
-    // $router->run();
+    $router = new Router\Router($routes);
+    $router->run();

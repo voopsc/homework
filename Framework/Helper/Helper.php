@@ -18,4 +18,13 @@
         }
       }
 
+      public static function requireFile(array $pathArr)
+      {
+        $filepath = self::getFilepathString($pathArr);
+
+        if (file_exists($filepath)) {
+          return require_once($filepath);
+        }
+      }
+
     }

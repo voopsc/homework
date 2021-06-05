@@ -24,11 +24,20 @@
         $this->prefixes = $prefixes;
       }
 
+      /** Call autoloader functions
+      */
       public function register()
       {
+        spl_autoload_register([$this, 'simpleClass']);
+        spl_autoload_register([$this, 'defaultLoader']);
         spl_autoload_register([$this, 'autoloader']);
       }
 
+      /** Check if class have namespace if yes return array with namespace and
+      * class name
+      * @param string $className full class name with namespace if it exist
+      * @return array
+      */
       private function getNamespace($className)
       {
         $result = false;
@@ -44,40 +53,63 @@
         return $result;
       }
 
+      /** Load class without namespace
+      * @param string $class
+      * @return void
+      */
+      public function simpleClass($class)
+      {
+        $dirPath = ROOT . DIRECTORY_SEPARATOR . 'Framework';
+        $scannedDir = array_diff(scandir($dirPath), array('..', '.'));
+
+        foreach ($scannedDir as $dir) {
+          $filepath = $dirPath . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $class . '.php';
+          if (file_exists($filepath)) {
+            require_once($filepath);
+            return;
+          }
+        }
+      }
+
+      /** Load all classes from framework dir
+      * @param string
+      * @return void
+      */
+      public function defaultLoader($class)
+      {
+        $classInfo = $this->getNamespace($class);
+        $classInfo = implode(DIRECTORY_SEPARATOR, $classInfo);
+        $this->requireFile($classInfo . '.php');
+      }
+
+      /** Load mapped class from class inicialization (constructor)
+      * @param string $className
+      * @return void
+      */
       public function autoloader($className)
       {
-        // echo "prefixes: <br>" ;
-        // print_r($this->prefixes);
-        // echo "<br> calssname: <br>";
-        // print_r($className);
-
         $classData = $this->getNamespace($className);
 
         foreach ($this->prefixes as $namespace => $filepath) {
           if (preg_match("~[^$namespace$]~", $classData[0])) {
             $this->requireFile($filepath . '/' . $classData[1] . '.php');
-            // echo ROOT . DIRECTORY_SEPARATOR . $filepath . DIRECTORY_SEPARATOR . $classData[1] . '.php';
             return;
           }
-          // else {
-          //   echo "no <br>";
-          // }
-          // echo "namespace: ";
-          // echo "<br>";
-          // var_dump($namespace);
-          // echo "<br>";
-          // echo "class namespace: ";
-          // echo "<br>";
-          // var_dump($classNamespace);
-          // echo "<br>";
-
         }
         die;
       }
 
+      /** Load single class by classname
+      * @param string $className
+      */
+      public function load($className)
+      {
+        print_r($this->prefixes[$key]);
+
+      }
+
       /**
        * If a file exists, require it from the file system.
-       *
        * @param string $file The file to require.
        * @return bool True if the file exists, false if not.
        */
@@ -89,11 +121,6 @@
           }
           // return false;
       }
-
-      // public function load($className)
-      // {
-      //
-      // }
 
       // end of class
     }
