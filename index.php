@@ -25,7 +25,7 @@
     $routes = [ROOT, 'App', 'config', 'routes.php'];
     $routes = Helper::getFilepathString($routes);
 
-    echo $routes;
+    // echo $routes;
 
     // $router = new Router\Router($routes);
     // $router->run();
