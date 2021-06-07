@@ -1,5 +1,6 @@
 <?php
 
+// Thi is test autoload for education how to write autoloader
 namespace Framework\Autoload;
 
  /**
