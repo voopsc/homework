@@ -75,19 +75,34 @@
       }
 
       /** Include controller file for run method
-      *
+      * @param string $controllerFilepath filepath for controller
+      * @param string
       */
-      private function callController($controllerFilepath)
+      private function callController($controllerFilepath, $controllerName)
       {
         if (file_exists($controllerFilepath)) {
           include_once($controllerFilepath);
 
           $controllerObject = new $controllerName;
+          return $controllerObject;
         } else {
           $this->errorHandler->getError(4);
         }
       }
 
+      /** Call method (controller) in object
+      * @param object
+      * @param string name of action (page)
+      * @param string another page params
+      */
+      private function callMethod($controllerObject, $pageName, $paramenters)
+      {
+        if (method_exists($controllerObject, $pageName)) {
+          call_user_func_array(array($controllerObject, $pageName), $paramenters);
+        } else {
+          $this->errorHandler->getError(5);
+        }
+      }
 
 
       /** Execute controller and page from URI
@@ -103,14 +118,20 @@
           $path = array_shift($routeData);
 
           // Set all variables for init controller and actions
-          $iternalRoute = preg_replace("~$uriPattern~i", $path, $requestedURI);
-          $segments = explode('/', $iternalRoute);
-          $controllerName = ucfirst(array_shift($segments).'Controller');
-          $pageName = 'page'.ucfirst(array_shift($segments));
-          $paramenters = $segments;
+          {
+            $iternalRoute = preg_replace("~$uriPattern~i", $path, $requestedURI);
+            $segments = explode('/', $iternalRoute);
+            $controllerName = ucfirst(array_shift($segments).'Controller');
+            $pageName = 'page'.ucfirst(array_shift($segments));
+            $paramenters = $segments;
 
-          $controllerFile = $this->controllerDir . $controllerName . '.php';
-          $this->callController($controllerFile);
+            $controllerFile = $this->controllerDir . DIRECTORY_SEPARATOR . $controllerName . '.php';
+            $controllerObject = $this->callController($controllerFile, $controllerName);
+          }
+          // check method
+          {
+            $this->callMethod($controllerObject, $pageName, $paramenters);
+          }
         } else {
           $this->errorHandler->getError(0);
         }
