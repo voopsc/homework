@@ -17,6 +17,7 @@
       {
         if ($this->developerMode == 1) {
           switch ($errorNum) {
+            case 5: echo "Error x0006: there is no page (action) controller"; die;
             case 4: echo "Error x0005: there is no controller file in app or in framework"; die;
             case 3: echo "Error x0004: there is empty router rules"; die;
             case 2: echo "Error x0003: there is no action in existed controller"; die;
