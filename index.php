@@ -14,14 +14,16 @@
     require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
 
     $autoload = new Autoloader\Autoload([
-      'App\\Model' => 'App'.DIRECTORY_SEPARATOR.'model',
+      // 'App\\Src' => 'App'.DIRECTORY_SEPARATOR.'model',
       // 'Framework\\Router' => 'Framework'.DIRECTORY_SEPARATOR.'Router',
       // 'Framework\\Autoload' => 'Framework'.DIRECTORY_SEPARATOR.'Autoload',
     ]);
 
     $autoload->register();
-    $autoload->load('App\\Model\\Product');
+    // $autoload->load('App\\Model\\Product');
+    $product = new App\Model\Product;
 
+    var_dump($product);
 
     // Router
     $routes = [ROOT, 'App', 'config', 'routes.php'];

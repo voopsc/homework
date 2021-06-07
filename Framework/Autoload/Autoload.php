@@ -96,7 +96,6 @@
             return;
           }
         }
-        die;
       }
 
       /** Load single class by classname
@@ -104,8 +103,14 @@
       */
       public function load($className)
       {
-        print_r($this->prefixes[$key]);
-
+        foreach ($this->prefixes as $namespace => $path) {
+          if (preg_match("~[$namespace]~", $className)) {
+            $filepath = str_replace("$namespace", $path, $className);
+            break;
+          }
+        }
+        echo $filepath;
+        $result = $this->requireFile($filepath.'.php');
       }
 
       /**
