@@ -10,12 +10,18 @@
       */
       public function pageIndex()
       {
-        $html = new Render\TemplateRender;
+        // $html = new Render\TemplateRender;
+        //
+        // $templatePath = Helper::getFilepathString([ROOT, 'App', 'view', 'parts', 'product_list.php']);
+        // $params = include_once(Helper::getFilepathString([ROOT, 'App', 'src', 'products.php']));
+        //
+        // require_once(Helper::getFilepathString([ROOT, 'App', 'view', 'home.php']));
 
-        $templatePath = Helper::getFilepathString([ROOT, 'App', 'view', 'parts', 'product_list.php']);
-        $params = include_once(Helper::getFilepathString([ROOT, 'App', 'src', 'products.php']));
+        $auth = new Framework\Authentication\UAuth();
+        $login = $auth->isAuth();
+        print_r($auth->credName);
+        var_dump($login);
 
-        require_once(Helper::getFilepathString([ROOT, 'App', 'view', 'home.php']));
         return true;
       }
       // end of class
