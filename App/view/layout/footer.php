@@ -56,7 +56,7 @@
           </div>
           <ul class="user-action list text-center">
             <li class="link active flex f-center">
-              <a href="#">Вийти</a>
+              <a href="/app/logout">Вийти</a>
             </li>
           </ul>
         <?php endif; ?>

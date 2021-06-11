@@ -1,5 +1,7 @@
 <?php
 
+    use Framework\Authentication as Auth;
+
     /**
      *
      */
@@ -12,7 +14,7 @@
         $referer = Helper::getRefererURI();
 
         if (!empty($_POST)) {
-          $auth = new Framework\Authentication\UAuth;
+          $auth = new Auth\UAuth;
 
           $login = $_POST['user'];
           $pass = $_POST['password'];
@@ -23,5 +25,16 @@
         header("Location: $referer");
         return false;
       }
+
+      public function pageLogOut()
+      {
+        $referer = Helper::getRefererURI();
+
+        $auth = new Auth\UAuth;
+        $auth->logOut();
+
+        header("Location: $referer");
+      }
+
       // end of class
     }
