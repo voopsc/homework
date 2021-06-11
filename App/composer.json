@@ -1,0 +1,10 @@
+{
+    "name": "user/app",
+    "authors": [
+        {
+            "name": "voopsc",
+            "email": "voopstudio@gmail.com"
+        }
+    ],
+    "require": {}
+}
