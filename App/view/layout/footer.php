@@ -13,7 +13,7 @@
         <div class="form-box">
           <div class="form-wrp text-center visible">
             <h2 class="title-main">Увійти</h2>
-            <form class="form-main flex f-center" action="#" method="post">
+            <form class="form-main flex f-center" action="/app/login" method="post">
 
               <label>
                 <input type="text" name="user_name" value="" placeholder="Ваше ім'я" min="3" autocomplete="name" required>
