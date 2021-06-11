@@ -34,13 +34,14 @@
 
 
       /** Return link of prev page by http_ref
-      * @return string|void
+      * @return string
       */
       public static function getRefererURI()
       {
         if (isset($_SERVER['HTTP_REFERER'])) {
           return (string) $_SERVER['HTTP_REFERER'];
         }
+        return '/';
       }
 
     }
