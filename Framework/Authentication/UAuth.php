@@ -2,6 +2,8 @@
 
     namespace Framework\Authentication;
 
+    use Framework\Session as Session;
+
     /** Authentication class for users
      *
      */
@@ -14,6 +16,7 @@
       public function __construct($credName = 'credentials')
       {
         $this->credName = $credName;
+        $this->session = new Session\Session;
       }
 
       /** Check if user is already authorized
@@ -35,6 +38,7 @@
       public function auth($login, $pass): bool
       {
         if (!$this->isAuth()) {
+          $this->session->start();
           $_SESSION[$this->credName] = [$login, $pass];
           return true;
         }

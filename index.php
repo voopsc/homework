@@ -8,6 +8,8 @@
     // Namespaces
     use Framework\Autoload as Autoloader;
     use Framework\Router as Router;
+    use Framework\Session as Session;
+    
 
     // Autoloader
     $autoloadPath = [FRAMEWORK, 'Autoload', 'Autoload.php'];
@@ -15,19 +17,18 @@
 
     $autoload = new Autoloader\Autoload([
       // 'App\\Model' => 'App'.DIRECTORY_SEPARATOR.'model',
-      // 'Framework\\Router' => 'Framework'.DIRECTORY_SEPARATOR.'Router',
-      // 'Framework\\Autoload' => 'Framework'.DIRECTORY_SEPARATOR.'Autoload',
     ]);
 
     $autoload->register();
 
+    // Session
+    $session = new Session\Session;
+    $session->start();
+
 
     // Router
-    $routes = [ROOT, 'App', 'config', 'routes.php'];
-    $routes = Helper::getFilepathString($routes);
-
-    $controller = [ROOT, 'App', 'controller'];
-    $controller = Helper::getFilepathString($controller);
+    $routes = Helper::getFilepathString([ROOT, 'App', 'config', 'routes.php']);
+    $controller = Helper::getFilepathString([ROOT, 'App', 'controller']);
 
     $router = new Router\Router($routes, $controller);
     $router->run();

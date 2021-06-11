@@ -19,7 +19,7 @@
 
           $auth->auth($login, $pass);
         }
-        
+
         header("Location: $referer");
         return false;
       }
