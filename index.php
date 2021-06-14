@@ -9,17 +9,17 @@
     use Framework\Autoload as Autoloader;
     use Framework\Router as Router;
     use Framework\Session as Session;
-    
+
 
     // Autoloader
-    $autoloadPath = [FRAMEWORK, 'Autoload', 'Autoload.php'];
+    $autoloadPath = [ROOT, 'vendor', "autoload.php"];
     require_once(implode(DIRECTORY_SEPARATOR, $autoloadPath));
 
-    $autoload = new Autoloader\Autoload([
-      // 'App\\Model' => 'App'.DIRECTORY_SEPARATOR.'model',
-    ]);
+    // $autoload = new Autoloader\Autoload([
+    //   // 'App\\Model' => 'App'.DIRECTORY_SEPARATOR.'model',
+    // ]);
 
-    $autoload->register();
+    // $autoload->register();
 
     // Session
     $session = new Session\Session;
