@@ -1,26 +1,32 @@
 <?php
 
-    namespace Framework\Authentication;
+declare(strict_types=1);
 
-    use Framework\Session as Session;
+namespace Framework\Authentication;
 
-    /** Authentication class for users
-     *
-     */
+use Framework\Session as Session;
+
+/** Authentication class for users
+ *
+ */
 class UAuth
 {
-  /** Constructor for UAuth
-  * @param string $credName with key of credentials in session array
-  */
-    public function __construct($credName = 'credentials')
+    /**
+     * Constructor for UAuth
+     *
+     * @param string $credName with key of credentials in session array
+     */
+    public function __construct(string $credName = 'credentials')
     {
         $this->credName = $credName;
         $this->session = new Session\Session();
     }
 
-    /** Check if user is already authorized
-    * @return bool
-    */
+    /**
+     * Check if user is already authorized
+     *
+     * @return bool
+     */
     public function isAuth(): bool
     {
         if (isset($_SESSION[$this->credName]) && !empty($_SESSION[$this->credName])) {
@@ -29,12 +35,16 @@ class UAuth
         return false;
     }
 
-    /** Set auth data
-    * @param string $login with user login
-    * @param string $pass with user password
-    * @return bool
-    */
-    public function auth($login, $pass): bool
+    /**
+     * Set auth data
+     *
+     * @param string $login with user login
+     *
+     * @param string $pass with user password
+     *
+     * @return bool
+     */
+    public function auth(string $pass, string $login): bool
     {
         if (!$this->isAuth()) {
             $this->session->start();
@@ -46,21 +56,24 @@ class UAuth
 
 
     /**
-    * Get user data
-    * @return string|bool
-    */
+     * Get user data
+     *
+     * @return string|bool
+     */
     public function getLogin()
     {
         if ($this->isAuth()) {
-            return (string) $_SESSION[$this->credName][0];
+            return (string)$_SESSION[$this->credName][0];
         }
         return false;
     }
 
 
-    /** Delete user data from session
-    * @return void
-    */
+    /**
+     * Delete user data from session
+     *
+     * @return void
+     */
     public function logOut(): void
     {
         if ($this->isAuth()) {
@@ -68,5 +81,4 @@ class UAuth
         }
     }
 
-    // end of class
 }
