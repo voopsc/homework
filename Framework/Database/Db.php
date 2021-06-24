@@ -14,6 +14,7 @@ class Db
 
     public function __construct(string $configFilepath)
     {
+    // FIXME: Change to env in future
         if (file_exists($configFilepath)) {
             $this->params = include_once $configFilepath;
         } else {
