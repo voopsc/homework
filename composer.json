@@ -2,8 +2,7 @@
   "autoload": {
     "psr-4": {
       "Framework\\": "Framework/"
-    },
-    "classmap": ["Framework/Helper/Helper.php"]
+    }
   },
   "require": {
       "monolog/monolog": "^2.2"

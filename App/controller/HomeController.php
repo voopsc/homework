@@ -1,23 +1,24 @@
 <?php
 
-    use Framework\Render as Render;
+use Framework\Helper\Help;
+use Framework\Render as Render;
 
-    class HomeController
+class HomeController
+{
+
+    /** Controller for home page
+     *
+     */
+    public function pageIndex()
     {
-
-      /** Controller for home page
-      *
-      */
-      public function pageIndex()
-      {
         $html = new Render\TemplateRender;
 
-        $templatePath = Helper::getFilepathString([ROOT, 'App', 'view', 'parts', 'product_list.php']);
-        $params = include_once(Helper::getFilepathString([ROOT, 'App', 'src', 'products.php']));
+        $templatePath = Help::getFilepathString([ROOT, 'App', 'view', 'parts', 'product_list.php']);
+        $params = include_once(Help::getFilepathString([ROOT, 'App', 'src', 'products.php']));
 
-        require_once(Helper::getFilepathString([ROOT, 'App', 'view', 'home.php']));
+        require_once(Help::getFilepathString([ROOT, 'App', 'view', 'home.php']));
 
         return true;
-      }
-      // end of class
     }
+    // end of class
+}
