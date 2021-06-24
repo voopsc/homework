@@ -7,7 +7,7 @@ namespace Framework\Helper;
 /**
  *
  */
-class Helper
+class Help
 {
     /**
      * Create filepath string from array by implode function
